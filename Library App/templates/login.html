@@ -1,21 +1,27 @@
 <html>
 	<head>
-		<title>Flask Intro - login page</title>
+		<title>Library Application Ver 1.0</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="static/logincss.css">
 	</head>
 	<body>
 		<div class="container">
-			<h1>Please login</h1>
+			<h1>Welcome To My Library Application<h1>
+			<h3>Please login</h3>
 			<br>
-			<form action="" method="post">
+			<form action="/" method="post">
 				<input type="text" placeholder="Username" name="username" value="{{request.form.username}}">
-				<input type="text" placeholder="Password" name="password" value="{{request.form.password}}">
+				<input type="password" placeholder="Password" name="password" value="{{request.form.password}}">
 				<input class="btn btn-default" type="submit" value="Login">
 			</form>
 			{% if error%}
 			<p class="error"><strong>Erorr:</strong> {{ error }}</p>
 			{% endif %}
+
+			<h3> OR </h3>
+			<p>Click <a href="/register">here to register</a></p>
 		</div>
+
 	</body>
 </html>

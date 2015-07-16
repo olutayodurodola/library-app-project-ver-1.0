@@ -7,6 +7,7 @@
 
 
 <link href="static/libraryappmaincss.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="static/registercss.css">
 
 </head>
 <body>
@@ -59,6 +60,77 @@ document.write(d)</script></p>
 <div id="mainsection">
 
 
+	<h1>Add a New Book to Library</h1>
+
+	
+	<div id="addbookformdiv">
+		<form class="form-inline">
+		    <div class="form-group">
+		        <label>Title</label> <br>
+		        <input type="text" class="form-control" placeholder="Title" name ="title">
+		        </div>
+		    <div class="form-group">
+		        <label>Author</label> <br>
+		        <input type="text" class="form-control" placeholder="Author" name="author">
+		    </div>
+		    <div class="form-group">
+		        <label>Subject</label> <br>
+		        <input type="text" class="form-control" placeholder="Subject" name="subject">
+		    </div>
+		    <div class="form-group">
+		        <label>Section</label> <br>
+		        <input type="text" class="form-control" placeholder="Section" name="section">
+		    </div>
+		        <div class="form-group">
+		        <label>Publisher</label> <br>
+		        <input type="text" class="form-control" placeholder="Publisher" name="publisher">
+		        </div>
+		    <div class="form-group">
+		        <label>Publication year</label> <br>
+		        <input type="text" class="form-control" placeholder="Publication year" name="pubyear">
+		    </div>
+		    
+		    
+		    <div class="option-group">
+		    	<label>Is Available </label>
+		        <select>
+  					<option name="isavailable">Yes</option>
+  					<option name="isavailable">No</option>
+  				</select>
+  			</div>
+ 		    <div class="option-group">
+		    	<label>Is Loaned</label>
+
+  				<select>
+  					<option name="isloaned">Yes</option>
+  					<option name="isloaned">No</option>
+  				</select>
+			</div>
+		    <div class="option-group">
+		    	<label>Is Returned</label>
+
+  				<select>
+  					<option name="isreturned">Yes</option>
+  					<option name="isreturned">No</option>
+  				</select>
+		    </div>
+		    
+
+		    <div class="form-group"> <!--Submit Button -->
+			    		<input type="submit" value="Add Book" width="20px">
+          	</div>
+			
+			{% for messages in get_flashed_messages()%}
+				<span class="success">{{ messages }} </span>
+				{% endfor %}
+				{% if error%}
+			<p class="error"><strong>Erorr:</strong> {{ error }}</p>
+			{% endif %}
+
+
+		<p>Please fill all fields</p>
+
+		</form>
 
 
 

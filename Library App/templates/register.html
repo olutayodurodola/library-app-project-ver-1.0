@@ -15,7 +15,7 @@
 				<div id="loginlogout" class="toplogin">
 					<p id="accessdate">This page was accessed on <script type="text/javascript">var d = new Date();
 document.write(d)</script></p>
-				<form action="" >
+				<form action="" method="POST">
 				Username: <input type="text" name="username">&nbsp; Password: <input type="text" name="password"> &nbsp;<input id="loginbutt" type="button" value="LOGIN">   &nbsp;<input id="logoutbutt" type="button" value="LOGOUT">
 				</form>
 			</div>
@@ -52,6 +52,7 @@ document.write(d)</script></p>
 				<li><a href="/searchforbook">Search by Author</a></li>
 				<li><a href="/searchforbook">Search by Publication year</a></li>
 			</ul>
+
 		</li>
 		<li><a href="/loanbook">Loan a book</a></li>
 		<li><a href="/returnbook">Return a book</a></li>
@@ -65,42 +66,42 @@ document.write(d)</script></p>
 
 	
 	<div id="registerformdiv">
-		<form class="form-inline">
+		<form class="form-inline" action="/register" method="POST">
 		    <div class="form-group">
 		        <label>First Name</label> <br>
-		        <input type="text" class="form-control" placeholder="First Name" value="{{request.form.firstname}}">
+		        <input type="text" class="form-control" placeholder="First Name" name="firstname">
 		        </div>
 		    <div class="form-group">
 		        <label>Last Name</label> <br>
-		        <input type="text" class="form-control" placeholder="Last Name" value="{{request.form.lastname}}">
+		        <input type="text" class="form-control" placeholder="Last Name" name="lastname">
 		    </div>
 		    <div class="form-group">
 		        <label>Department</label> <br>
-		        <input type="text" class="form-control" placeholder="Department" value="{{request.form.department}}">
+		        <input type="text" class="form-control" placeholder="Department" name="department">
 		    </div>
 		    <div class="form-group">
 		        <label>Student Number</label> <br>
-		        <input type="text" class="form-control" placeholder="Student Number" value="{{request.form.studentnumber}}">
+		        <input type="text" class="form-control" placeholder="Student Number" name="studnum">
 		    </div>
 		        <div class="form-group">
 		        <label>E-mail</label> <br>
-		        <input type="text" class="form-control" placeholder="email" value="{{request.form.email}}">
+		        <input type="text" class="form-control" placeholder="email" name="email">
 		        </div>
 		    <div class="form-group">
 		        <label>Telephone</label> <br>
-		        <input type="text" class="form-control" placeholder="telephone" value="{{request.form.telephone}}">
+		        <input type="text" class="form-control" placeholder="telephone" name="telnum">
 		    </div>
 		    <div class="form-group">
 		        <label>Address</label> <br>
-		        <input type="text" class="form-control" placeholder="address" value="{{request.form.address}}">
+		        <input type="text" class="form-control" placeholder="address" name="address">
 		    </div>
 		    <div class="form-group">
 		        <label>Username</label> <br>
-		        <input type="text" class="form-control" placeholder="Input a username" value="{{request.form.username}}">
+		        <input type="text" class="form-control" placeholder="Input a username" name="username">
 		    </div>
 		        <div class="form-group">
 		        <label>Password</label> <br>
-		        <input type="text" class="form-control" placeholder="password" value="{{request.form.password}}">
+		        <input type="text" class="form-control" placeholder="password" name="password">
 		    </div>
 
 		    <div class="form-group"> <!--Submit Button -->
@@ -108,7 +109,18 @@ document.write(d)</script></p>
           	</div>
 
 		</form>
-			
+
+			{% for messages in get_flashed_messages()%}
+				<span class="success">{{ messages }} </span>
+				{% endfor %}
+				{% if error%}
+			<p class="error"><strong>Erorr:</strong> {{ error }}</p>
+			{% endif %}
+
+
+		<p>Please fill all fields</p>
+
+		
 	</div>
 </div>
 
