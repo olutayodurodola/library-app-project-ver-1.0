@@ -9,6 +9,17 @@
 <link href="static/libraryappmaincss.css" rel="stylesheet" type="text/css"/>
 <link href="static/registercss.css" rel="stylesheet" type="text/css"/>
 
+<style>
+.center {
+    margin: auto;
+    width: 60%;
+    border:3px solid #fff;
+    padding: 10px;
+}
+.centerh1{
+	text-align: center;
+}
+</style>
 
 </head>
 <body>
@@ -62,10 +73,10 @@ document.write(d)</script></p>
 <div id="mainsection">
 
 <!-- Main Body of Page Goes Here -->
-	<h1>Register Library User</h1>
+	<h1 class="centerh1">Register Library User</h1>
 
 	
-	<div id="registerformdiv">
+	<div id="registerformdiv" class="center">
 		<form class="form-inline" action="/register" method="POST">
 		    <div class="form-group">
 		        <label>First Name</label> <br>

@@ -9,6 +9,17 @@
 <link href="static/libraryappmaincss.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="static/registercss.css">
 
+<style>
+.center {
+    margin: auto;
+    width: 60%;
+    border:3px solid #fff;
+    padding: 10px;
+}
+.centerh1{
+	text-align: center;
+}
+</style>
 </head>
 <body>
 				<div id="loginlogout" class="toplogin">
@@ -60,11 +71,19 @@ document.write(d)</script></p>
 <div id="mainsection">
 
 
-	<h1>Add a New Book to Library</h1>
+	<h1 class="centerh1">Add a New Book to Library</h1>
 
 	
-	<div id="addbookformdiv">
-		<form class="form-inline">
+	<div id="addbookformdiv" class="center">
+		<form class="form-inline" action="/addabook" method="POST">
+
+			{% for messages in get_flashed_messages()%}
+				<span class="success">{{ messages }} </span>
+				{% endfor %}
+				{% if error%}
+			<p class="error"><strong>Erorr:</strong> {{ error }}</p>
+			{% endif %}
+
 		    <div class="form-group">
 		        <label>Title</label> <br>
 		        <input type="text" class="form-control" placeholder="Title" name ="title">
@@ -91,41 +110,25 @@ document.write(d)</script></p>
 		    </div>
 		    
 		    
-		    <div class="option-group">
-		    	<label>Is Available </label>
-		        <select>
-  					<option name="isavailable">Yes</option>
-  					<option name="isavailable">No</option>
-  				</select>
+		    <div class="form-group">
+		    	<label>Is Available </label> <br>
+		        <input type="text" class="form-control" placeholder="Is Available" name="isavailable">
   			</div>
- 		    <div class="option-group">
-		    	<label>Is Loaned</label>
 
-  				<select>
-  					<option name="isloaned">Yes</option>
-  					<option name="isloaned">No</option>
-  				</select>
-			</div>
-		    <div class="option-group">
-		    	<label>Is Returned</label>
+  			 <div class="form-group">
+		    	<label>Is Loaned </label> <br>
+		        <input type="text" class="form-control" placeholder="Is Loaned" name="isloaned">
+  			</div>
+  			<div class= "form-group">
+		    	<label>Is Returned</label> <br>
+		        <input type="text" class="form-control" placeholder="Is Returned" name="isreturned">
+  			</div>
 
-  				<select>
-  					<option name="isreturned">Yes</option>
-  					<option name="isreturned">No</option>
-  				</select>
-		    </div>
-		    
-
-		    <div class="form-group"> <!--Submit Button -->
+ 		    <div class="form-group"> <!--Submit Button -->
 			    		<input type="submit" value="Add Book" width="20px">
           	</div>
 			
-			{% for messages in get_flashed_messages()%}
-				<span class="success">{{ messages }} </span>
-				{% endfor %}
-				{% if error%}
-			<p class="error"><strong>Erorr:</strong> {{ error }}</p>
-			{% endif %}
+			
 
 
 		<p>Please fill all fields</p>

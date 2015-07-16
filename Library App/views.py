@@ -81,9 +81,7 @@ def findabook():
 def returnbook():
 	return render_template("returnabook.html")
 
-@app.route('/loanbook')
-def loanbook():
-	return render_template("loanabook.html")
+
 
 @app.route('/aboutus')
 def aboutus():
@@ -114,13 +112,14 @@ def searchforbook():
 	return render_template("searchlibrary.html")
 
 @app.route('/addabook')
-def addabook():
+def addbook():
 	return render_template("addabook.html")
 
 @app.route('/addabook', methods=['GET','POST'])
-def addbk():
+def addabook():
 	error = None
 	if request.method == 'POST':
+
 
 		title1 = request.form['title']
 		author1 = request.form['author']
@@ -142,3 +141,16 @@ def addbk():
 		return redirect(url_for('home'))
 	
 	return render_template('addabook.html', error = error)
+
+@app.route('/loanbook')
+def loanbook():
+	mylistofbooks = []
+	allbooks = db.session.query(Book).order_by(Book.title)
+	
+	return render_template("loanabook.html", allbooks = allbooks)
+'''
+@app.route('/loanbook', methods=['GET','POST'])
+def loanbk():
+	mylistofbooks = []
+	return render_template("loanbook.html")
+'''

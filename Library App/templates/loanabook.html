@@ -58,12 +58,15 @@ document.write(d)</script></p>
 </nav>
 <div id="mainsection">
 
+<form action="/loanbook">
+{% for messages in allbooks %}
+	
+		<p class="success"><input type="checkbox" name="OptIn" value="yes" size="2em"><a href="#">{{ messages }} <a></p>
+{% endfor %}
+<p> </p>
+<input type="submit" value="Loan Book" width="20em" height="5em">
 
-
-
-
-
-
+</form>
 
 
 
